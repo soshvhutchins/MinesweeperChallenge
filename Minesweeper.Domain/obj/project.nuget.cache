@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "n8iT/dlcykA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vhutchins\\source\\repos\\minesweep\\src\\Minesweeper.Domain\\Minesweeper.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vhutchins\\.nuget\\packages\\microsoft.net.sdk.compilers.toolset\\9.0.304\\microsoft.net.sdk.compilers.toolset.9.0.304.nupkg.sha512"
+  ],
+  "logs": []
+}

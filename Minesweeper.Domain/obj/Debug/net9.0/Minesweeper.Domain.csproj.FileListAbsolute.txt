@@ -1,0 +1,12 @@
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\bin\Debug\net9.0\Minesweeper.Domain.deps.json
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\bin\Debug\net9.0\Minesweeper.Domain.dll
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\bin\Debug\net9.0\Minesweeper.Domain.pdb
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\obj\Debug\net9.0\Minesweeper.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\obj\Debug\net9.0\Minesweeper.Domain.AssemblyInfoInputs.cache
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\obj\Debug\net9.0\Minesweeper.Domain.AssemblyInfo.cs
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\obj\Debug\net9.0\Minesweeper.Domain.csproj.CoreCompileInputs.cache
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\obj\Debug\net9.0\Minesweeper.Domain.sourcelink.json
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\obj\Debug\net9.0\Minesweeper.Domain.dll
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\obj\Debug\net9.0\refint\Minesweeper.Domain.dll
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\obj\Debug\net9.0\Minesweeper.Domain.pdb
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Domain\obj\Debug\net9.0\ref\Minesweeper.Domain.dll

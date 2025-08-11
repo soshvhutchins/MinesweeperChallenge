@@ -1,0 +1,16 @@
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\bin\Debug\net9.0\Minesweeper.Application.deps.json
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\bin\Debug\net9.0\Minesweeper.Application.dll
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\bin\Debug\net9.0\Minesweeper.Application.pdb
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\bin\Debug\net9.0\Minesweeper.Domain.dll
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\bin\Debug\net9.0\Minesweeper.Domain.pdb
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\obj\Debug\net9.0\Minesweeper.Application.csproj.AssemblyReference.cache
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\obj\Debug\net9.0\Minesweeper.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\obj\Debug\net9.0\Minesweeper.Application.AssemblyInfoInputs.cache
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\obj\Debug\net9.0\Minesweeper.Application.AssemblyInfo.cs
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\obj\Debug\net9.0\Minesweeper.Application.csproj.CoreCompileInputs.cache
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\obj\Debug\net9.0\Minesweeper.Application.sourcelink.json
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\obj\Debug\net9.0\Mineswee.A75FFD5E.Up2Date
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\obj\Debug\net9.0\Minesweeper.Application.dll
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\obj\Debug\net9.0\refint\Minesweeper.Application.dll
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\obj\Debug\net9.0\Minesweeper.Application.pdb
+C:\Users\vhutchins\source\repos\minesweep\src\Minesweeper.Application\obj\Debug\net9.0\ref\Minesweeper.Application.dll
