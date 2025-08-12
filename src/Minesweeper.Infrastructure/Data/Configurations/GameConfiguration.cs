@@ -61,6 +61,10 @@ public class GameConfiguration : IEntityTypeConfiguration<Game>
         // Ignore complex properties that are reconstructed in repositories
         builder.Ignore(g => g.PlayerId);
         builder.Ignore(g => g.Board);
+        // Persist board state as JSON
+        builder.Property(g => g.BoardStateJson)
+            .HasColumnType("nvarchar(max)")
+            .HasColumnName("BoardStateJson");
 
         // Indexes for performance
         builder.HasIndex(g => g.PlayerIdValue)

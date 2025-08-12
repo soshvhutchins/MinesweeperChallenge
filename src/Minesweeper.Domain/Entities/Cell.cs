@@ -8,10 +8,10 @@ namespace Minesweeper.Domain.Entities;
 /// </summary>
 public class Cell
 {
-    public CellPosition Position { get; private set; }
-    public bool HasMine { get; private set; }
-    public CellState State { get; private set; }
-    public int AdjacentMineCount { get; private set; }
+    public CellPosition Position { get; set; }
+    public bool HasMine { get; set; }
+    public CellState State { get; set; }
+    public int AdjacentMineCount { get; set; }
 
     private Cell() { } // For EF Core
 

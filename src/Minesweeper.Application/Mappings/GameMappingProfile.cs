@@ -66,7 +66,8 @@ public class GameMappingProfile : Profile
                     HasMine = cell.HasMine,
                     AdjacentMineCount = cell.AdjacentMineCount,
                     DisplayValue = cell.GetDisplayValue(),
-                    IsRevealed = cell.IsRevealed,
+                    // Force IsRevealed to true if state is Revealed
+                    IsRevealed = cell.State == Minesweeper.Domain.Enums.CellState.Revealed,
                     IsFlagged = cell.IsFlagged,
                     IsHidden = cell.IsHidden
                 };

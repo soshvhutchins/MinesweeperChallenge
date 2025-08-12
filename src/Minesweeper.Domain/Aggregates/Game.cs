@@ -11,6 +11,8 @@ namespace Minesweeper.Domain.Aggregates;
 /// </summary>
 public class Game : Entity<GameId>
 {
+    // Persisted board state as JSON for EF Core
+    public string? BoardStateJson { get; set; }
     private readonly List<CellPosition> _revealedPositions = new();
     private DateTime? _pausedAt;
 
@@ -36,6 +38,13 @@ public class Game : Entity<GameId>
     public void ReconstructBoard()
     {
         if (Board != null) return; // Already initialized
+
+        if (!string.IsNullOrEmpty(BoardStateJson))
+        {
+            // Deserialize board from JSON
+            Board = GameBoardJsonConverter.Deserialize(BoardStateJson);
+            return;
+        }
 
         var difficulty = GameDifficulty.FromName(DifficultyName);
         if (difficulty == null)
@@ -174,6 +183,8 @@ public class Game : Entity<GameId>
             RaiseDomainEvent(new GameWonEvent(Id, PlayerId, GetGameDuration(), Board.GetFlaggedCount()));
         }
 
+        // After revealing, serialize board state for persistence
+        BoardStateJson = GameBoardJsonConverter.Serialize(Board);
         return Result.Success();
     }
 
@@ -194,6 +205,8 @@ public class Game : Entity<GameId>
         var cell = Board.GetCell(position);
         RaiseDomainEvent(new CellFlaggedEvent(Id, PlayerId, position, cell.IsFlagged));
 
+        // After flagging, serialize board state for persistence
+        BoardStateJson = GameBoardJsonConverter.Serialize(Board);
         return Result.Success();
     }
 
@@ -207,6 +220,8 @@ public class Game : Entity<GameId>
         if (Status != GameStatus.InProgress)
             return Result.Failure("Game is not in progress");
 
+        // After questioning, serialize board state for persistence
+        BoardStateJson = GameBoardJsonConverter.Serialize(Board);
         return Board.ToggleQuestion(position);
     }
 

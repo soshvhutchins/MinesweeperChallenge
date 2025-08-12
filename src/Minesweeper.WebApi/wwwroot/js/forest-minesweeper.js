@@ -340,16 +340,20 @@ class ForestMinesweeper {
             const col = parseInt(cell.dataset.col);
             const cellData = board.cells[row][col];
 
+            // Always reset classes
             cell.className = 'mine-cell';
-            // Do not clear textContent here; preserve revealed numbers
 
+            // If flagged, always show flag
             if (cellData.isFlagged) {
                 cell.classList.add('flagged');
                 cell.innerHTML = '<i class="fas fa-flag"></i>';
-            } else if (cellData.isRevealed) {
+                return;
+            }
+
+            // If revealed, always set content
+            if (cellData.isRevealed) {
                 cell.classList.add('revealed');
                 if (cellData.hasMine) {
-                    // If this is the exploded cell, do NOT add .mine (no red background)
                     if (this.explodedCell && this.explodedCell.row === row && this.explodedCell.col === col) {
                         cell.classList.add('mine-exploded');
                         cell.innerHTML = `
@@ -372,10 +376,11 @@ class ForestMinesweeper {
                 } else {
                     cell.innerHTML = '';
                 }
-            } else {
-                // If not revealed and not flagged, clear content
-                cell.innerHTML = '';
+                return;
             }
+
+            // If not revealed and not flagged, clear content
+            cell.innerHTML = '';
         });
     }
 

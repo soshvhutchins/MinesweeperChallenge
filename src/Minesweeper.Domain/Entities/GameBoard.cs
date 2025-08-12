@@ -8,7 +8,7 @@ namespace Minesweeper.Domain.Entities;
 /// </summary>
 public class GameBoard
 {
-    private readonly Cell[,] _cells;
+    public List<List<Cell>> Cells { get; set; }
     private readonly Random _random;
 
     public GameDifficulty Difficulty { get; private set; }
@@ -16,8 +16,8 @@ public class GameBoard
 
     private GameBoard()
     {
-        // For EF Core only; fields will be set by reflection
-        _cells = null!;
+        // For EF Core/JSON only; fields will be set by reflection/serializer
+        Cells = null!;
         _random = null!;
         Difficulty = null!;
     }
@@ -26,25 +26,22 @@ public class GameBoard
     {
         Difficulty = difficulty ?? throw new ArgumentNullException(nameof(difficulty));
         _random = random ?? new Random();
-        _cells = new Cell[difficulty.Rows, difficulty.Columns];
-
-        InitializeCells();
+        Cells = new List<List<Cell>>(difficulty.Rows);
+        for (int row = 0; row < difficulty.Rows; row++)
+        {
+            var rowList = new List<Cell>(difficulty.Columns);
+            for (int col = 0; col < difficulty.Columns; col++)
+            {
+                var position = CellPosition.Of(row, col);
+                rowList.Add(new Cell(position));
+            }
+            Cells.Add(rowList);
+        }
     }
 
     /// <summary>
     /// Initializes all cells on the board
     /// </summary>
-    private void InitializeCells()
-    {
-        for (int row = 0; row < Difficulty.Rows; row++)
-        {
-            for (int col = 0; col < Difficulty.Columns; col++)
-            {
-                var position = CellPosition.Of(row, col);
-                _cells[row, col] = new Cell(position);
-            }
-        }
-    }
 
     /// <summary>
     /// Places mines on the board, avoiding the first clicked position
@@ -285,7 +282,7 @@ public class GameBoard
         if (!IsValidPosition(position))
             throw new ArgumentOutOfRangeException(nameof(position), "Position is outside board bounds");
 
-        return _cells[position.Row, position.Column];
+        return Cells[position.Row][position.Column];
     }
 
     /// <summary>
@@ -305,7 +302,7 @@ public class GameBoard
         {
             for (int col = 0; col < Difficulty.Columns; col++)
             {
-                yield return _cells[row, col];
+                yield return Cells[row][col];
             }
         }
     }
