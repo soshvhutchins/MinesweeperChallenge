@@ -1,0 +1,574 @@
+{
+  // .NET & C# Configuration
+  "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
+  "dotnet.inlayHints.enableInlayHintsForParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForLiteralParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForIndexerParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForObjectCreationParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForOtherParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForTypes": true,
+  "dotnet.inlayHints.enableInlayHintsForImplicitVariableTypes": true,
+  "dotnet.inlayHints.enableInlayHintsForImplicitObjectCreation": true,
+  "dotnet.server.useOmnisharp": false,
+  "dotnet.unitTests.runSettingsPath": "",
+  // C# Specific Settings
+  "csharp.semanticHighlighting.enabled": true,
+  "csharp.inlayHints.parameters.enabled": true,
+  "csharp.inlayHints.parameters.forLiteralParameters": true,
+  "csharp.inlayHints.parameters.forIndexerParameters": true,
+  "csharp.inlayHints.parameters.forObjectCreationParameters": true,
+  "csharp.inlayHints.parameters.forOtherParameters": true,
+  "csharp.format.enable": true,
+  "csharp.showOmnisharpLogOnError": true,
+  // GitHub Copilot Configuration
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": true,
+    "csharp": true,
+    "json": true,
+    "jsonc": true,
+    "xml": true,
+    "html": true,
+    "css": true,
+    "javascript": true,
+    "typescript": true,
+    "dockerfile": true,
+    "sql": true,
+    "powershell": true,
+    "shellscript": true
+  },
+  "github.copilot.advanced": {
+    "debug.overrideEngine": "copilot-chat",
+    "debug.testOverrideProxyUrl": "",
+    "debug.overrideProxyUrl": "",
+    "length": 500,
+    "temperature": "",
+    "top_p": "",
+    "stops": {
+      "*": [
+        "\n\n\n"
+      ],
+      "csharp": [
+        "\n\n",
+        "// END",
+        "/* END */"
+      ],
+      "json": [
+        "\n\n"
+      ],
+      "markdown": [
+        "\n\n"
+      ]
+    }
+  },
+  "github.copilot.chat.followUps": "always",
+  "github.copilot.chat.localeOverride": "auto",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.editor.enableCodeActions": true,
+  "github.copilot.terminal.suggestEnabled": true,
+  // IntelliCode Configuration
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "vsintellicode.features.python.deepLearning": "enabled",
+  "vsintellicode.features.csharp.deepLearning": "enabled",
+  // Editor Configuration for .NET Development
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit",
+    "source.addMissingImports": "explicit"
+  },
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.tabCompletion": "on",
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "on",
+    "strings": "on"
+  },
+  "editor.quickSuggestionsDelay": 10,
+  "editor.parameterHints.enabled": true,
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingQuotes": "always",
+  "editor.autoSurround": "languageDefined",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.inlayHints.enabled": "on",
+  "editor.semanticHighlighting.enabled": true,
+  "editor.linkedEditing": true,
+  "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Hack Nerd Font Mono', 'SF Mono', 'Monaco', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 11,
+  "editor.fontWeight": "normal",
+  "editor.lineHeight": 1.4,
+  "editor.minimap.enabled": true,
+  "editor.minimap.showSlider": "always",
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 120,
+  // File Associations for .NET
+  "files.associations": {
+    "*.cs": "csharp",
+    "*.csx": "csharp",
+    "*.cshtml": "razor",
+    "*.razor": "razor",
+    "*.vb": "vb",
+    "*.fs": "fsharp",
+    "*.fsx": "fsharp",
+    "*.fsi": "fsharp",
+    "*.ml": "fsharp",
+    "*.mli": "fsharp",
+    "*.config": "xml",
+    "*.csproj": "xml",
+    "*.fsproj": "xml",
+    "*.vbproj": "xml",
+    "*.sln": "plaintext",
+    "*.nuspec": "xml",
+    "appsettings*.json": "jsonc",
+    "*.pubxml": "xml",
+    "*.targets": "xml",
+    "*.props": "xml",
+    "Directory.Build.props": "xml",
+    "Directory.Build.targets": "xml",
+    "global.json": "jsonc"
+  },
+  // Files to exclude from file explorer
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/.vs": true,
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/*.user": true,
+    "**/*.userosscache": true,
+    "**/*.sln.docstates": true,
+    "**/.vscode/launch.json": false,
+    "**/.vscode/tasks.json": false,
+    "**/.vscode/settings.json": false
+  },
+  // Search configuration
+  "search.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/node_modules": true,
+    "**/.vs": true,
+    "**/packages": true,
+    "**/*.dll": true,
+    "**/*.pdb": true,
+    "**/*.exe": true
+  },
+  // Terminal Configuration
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.defaultProfile.osx": "bash",
+  "terminal.integrated.fontFamily": "'FiraCode Nerd Font Mono', 'Hack Nerd Font Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Consolas', 'Courier New', monospace",
+  "terminal.integrated.fontSize": 10,
+  "terminal.integrated.fontWeight": "normal",
+  "terminal.integrated.lineHeight": 1.2,
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "args": [
+        "-NoLogo"
+      ]
+    },
+    "Command Prompt": {
+      "path": "cmd.exe",
+      "args": []
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    }
+  },
+  "terminal.integrated.profiles.osx": {
+    "bash": {
+      "path": "bash",
+      "args": [
+        "--rcfile",
+        "~/.bashrc_simple"
+      ],
+      "icon": "terminal-bash"
+    },
+    "zsh": {
+      "path": "zsh",
+      "args": [
+        "-c",
+        "source ~/.bashrc_simple 2>/dev/null || true; exec zsh"
+      ]
+    }
+  },
+  "terminal.integrated.env.osx": {
+    "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+    "DOTNET_SKIP_FIRST_TIME_EXPERIENCE": "1"
+  },
+  // Testing Configuration
+  "dotnetCoreExplorer.enableTelemetry": false,
+  "testExplorer.codeLens": true,
+  "testExplorer.gutterDecoration": true,
+  "testExplorer.onStart": "reset",
+  "testExplorer.onReload": "reset",
+  "testExplorer.sort": "byLocation",
+  // Git Configuration
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.postCommitCommand": "none",
+  "git.showInlineOpenFileAction": false,
+  "git.suggestSmartCommit": true,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.enabled": true,
+  "gitlens.codeLens.authors.enabled": true,
+  "gitlens.codeLens.recentChange.enabled": true,
+  // Debugging Configuration
+  "debug.allowBreakpointsEverywhere": false,
+  "debug.inlineValues": "on",
+  "debug.showInStatusBar": "always",
+  "debug.toolBarLocation": "floating",
+  "debug.console.fontSize": 11,
+  "debug.console.lineHeight": 22,
+  // Security
+  "security.workspace.trust.untrustedFiles": "prompt",
+  "security.workspace.trust.banner": "always",
+  "security.workspace.trust.startupPrompt": "always",
+  // Performance
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
+  "workbench.enableExperiments": false,
+  "telemetry.telemetryLevel": "off",
+  // Forest Green Pantone Gradient Workspace Theming
+  // "workbench.colorTheme": "Default Dark Modern",
+  // "workbench.colorCustomizations": {
+  //   // Activity Bar - Forest Green Gradient
+  //   "activityBar.background": "#1a3d2e",
+  //   "activityBar.foreground": "#90ee90",
+  //   "activityBar.inactiveForeground": "#5a8a6b",
+  //   "activityBar.border": "#2d5f47",
+  //   "activityBarBadge.background": "#228b22",
+  //   "activityBarBadge.foreground": "#ffffff",
+  //   // Side Bar - Forest Green Tones
+  //   "sideBar.background": "#1e4a37",
+  //   "sideBar.foreground": "#a8d8a8",
+  //   "sideBar.border": "#2d5f47",
+  //   "sideBarTitle.foreground": "#90ee90",
+  //   "sideBarSectionHeader.background": "#2d5f47",
+  //   "sideBarSectionHeader.foreground": "#90ee90",
+  //   "sideBarSectionHeader.border": "#228b22",
+  //   // Editor - Darker Forest Background with Green Accents
+  //   "editor.background": "#0f2818",
+  //   "editor.foreground": "#a8d8a8",
+  //   "editor.lineHighlightBackground": "#1a3d2e",
+  //   "editor.lineHighlightBorder": "#2d5f47",
+  //   "editor.selectionBackground": "#2d5f47",
+  //   "editor.selectionHighlightBackground": "#1a3d2e88",
+  //   "editor.wordHighlightBackground": "#2d5f4750",
+  //   "editor.wordHighlightStrongBackground": "#228b2250",
+  //   "editorCursor.foreground": "#90ee90",
+  //   "editorWhitespace.foreground": "#2d5f47",
+  //   "editorIndentGuide.background1": "#2d5f47",
+  //   "editorIndentGuide.activeBackground1": "#228b22",
+  //   "editorRuler.foreground": "#2d5f47",
+  //   // Editor Groups & Tabs - Forest Green Gradient
+  //   "editorGroup.border": "#2d5f47",
+  //   "editorGroupHeader.tabsBackground": "#1a3d2e",
+  //   "editorGroupHeader.tabsBorder": "#2d5f47",
+  //   "tab.activeBackground": "#2d5f47",
+  //   "tab.activeForeground": "#90ee90",
+  //   "tab.activeBorder": "#228b22",
+  //   "tab.activeBorderTop": "#32cd32",
+  //   "tab.inactiveBackground": "#1a3d2e",
+  //   "tab.inactiveForeground": "#5a8a6b",
+  //   "tab.border": "#2d5f47",
+  //   "tab.hoverBackground": "#2d5f47",
+  //   "tab.hoverForeground": "#90ee90",
+  //   // Panel (Terminal, Problems, etc.) - Darker Forest
+  //   "panel.background": "#0a1f14",
+  //   "panel.border": "#2d5f47",
+  //   "panelTitle.activeBorder": "#228b22",
+  //   "panelTitle.activeForeground": "#90ee90",
+  //   "panelTitle.inactiveForeground": "#5a8a6b",
+  //   // Status Bar - Forest Green Gradient
+  //   "statusBar.background": "#1a3d2e",
+  //   "statusBar.foreground": "#90ee90",
+  //   "statusBar.border": "#2d5f47",
+  //   "statusBar.debuggingBackground": "#228b22",
+  //   "statusBar.debuggingForeground": "#ffffff",
+  //   "statusBar.noFolderBackground": "#2d5f47",
+  //   "statusBarItem.hoverBackground": "#2d5f47",
+  //   "statusBarItem.activeBackground": "#228b22",
+  //   // Title Bar - Dark Forest
+  //   "titleBar.activeBackground": "#0f2818",
+  //   "titleBar.activeForeground": "#90ee90",
+  //   "titleBar.inactiveBackground": "#0a1f14",
+  //   "titleBar.inactiveForeground": "#5a8a6b",
+  //   "titleBar.border": "#2d5f47",
+  //   // Menu Bar - Forest Green
+  //   "menubar.selectionBackground": "#2d5f47",
+  //   "menubar.selectionForeground": "#90ee90",
+  //   "menu.background": "#1a3d2e",
+  //   "menu.foreground": "#a8d8a8",
+  //   "menu.selectionBackground": "#2d5f47",
+  //   "menu.selectionForeground": "#90ee90",
+  //   "menu.border": "#2d5f47",
+  //   // Notifications - Forest Green Accents
+  //   "notificationCenter.border": "#2d5f47",
+  //   "notificationCenterHeader.background": "#1a3d2e",
+  //   "notificationCenterHeader.foreground": "#90ee90",
+  //   "notificationToast.border": "#2d5f47",
+  //   "notifications.background": "#1a3d2e",
+  //   "notifications.foreground": "#a8d8a8",
+  //   "notifications.border": "#2d5f47",
+  //   "notificationLink.foreground": "#32cd32",
+  //   // Input Controls - Forest Green Theme
+  //   "input.background": "#1a3d2e",
+  //   "input.foreground": "#a8d8a8",
+  //   "input.border": "#2d5f47",
+  //   "input.placeholderForeground": "#5a8a6b",
+  //   "inputOption.activeBorder": "#228b22",
+  //   "inputOption.activeBackground": "#2d5f47",
+  //   "inputOption.activeForeground": "#90ee90",
+  //   "inputValidation.errorBackground": "#8b0000",
+  //   "inputValidation.errorBorder": "#ff0000",
+  //   "inputValidation.warningBackground": "#8b6914",
+  //   "inputValidation.warningBorder": "#ffd700",
+  //   "inputValidation.infoBackground": "#1a3d2e",
+  //   "inputValidation.infoBorder": "#228b22",
+  //   // Buttons - Forest Green
+  //   "button.background": "#228b22",
+  //   "button.foreground": "#ffffff",
+  //   "button.hoverBackground": "#32cd32",
+  //   "button.secondaryBackground": "#2d5f47",
+  //   "button.secondaryForeground": "#90ee90",
+  //   "button.secondaryHoverBackground": "#3a7a5a",
+  //   // Lists & Trees - Forest Green
+  //   "list.activeSelectionBackground": "#2d5f47",
+  //   "list.activeSelectionForeground": "#90ee90",
+  //   "list.inactiveSelectionBackground": "#1a3d2e",
+  //   "list.inactiveSelectionForeground": "#a8d8a8",
+  //   "list.hoverBackground": "#2d5f47",
+  //   "list.hoverForeground": "#90ee90",
+  //   "list.focusBackground": "#2d5f47",
+  //   "list.focusForeground": "#90ee90",
+  //   "list.highlightForeground": "#32cd32",
+  //   "tree.indentGuidesStroke": "#2d5f47",
+  //   // Scrollbars - Forest Green
+  //   "scrollbarSlider.background": "#2d5f4760",
+  //   "scrollbarSlider.hoverBackground": "#2d5f47",
+  //   "scrollbarSlider.activeBackground": "#228b22",
+  //   // Badges - Forest Green
+  //   "badge.background": "#228b22",
+  //   "badge.foreground": "#ffffff",
+  //   // Progress Bars - Forest Green
+  //   "progressBar.background": "#228b22",
+  //   // Breadcrumbs - Forest Theme
+  //   "breadcrumb.background": "#1a3d2e",
+  //   "breadcrumb.foreground": "#a8d8a8",
+  //   "breadcrumb.focusForeground": "#90ee90",
+  //   "breadcrumb.activeSelectionForeground": "#32cd32",
+  //   "breadcrumbPicker.background": "#1a3d2e",
+  //   // Terminal - Forest Green Theme
+  //   "terminal.background": "#0a1f14",
+  //   "terminal.foreground": "#a8d8a8",
+  //   "terminal.ansiGreen": "#32cd32",
+  //   "terminal.ansiBrightGreen": "#90ee90",
+  //   "terminal.selectionBackground": "#2d5f47",
+  //   "terminalCursor.background": "#90ee90",
+  //   "terminalCursor.foreground": "#90ee90",
+  //   // Diff Editor - Forest Green
+  //   "diffEditor.insertedTextBackground": "#228b2230",
+  //   "diffEditor.removedTextBackground": "#8b000030",
+  //   "diffEditor.insertedLineBackground": "#228b2220",
+  //   "diffEditor.removedLineBackground": "#8b000020",
+  //   // Merge Conflicts - Forest Green Accents
+  //   "merge.currentHeaderBackground": "#228b2240",
+  //   "merge.currentContentBackground": "#228b2220",
+  //   "merge.incomingHeaderBackground": "#1e90ff40",
+  //   "merge.incomingContentBackground": "#1e90ff20",
+  //   "merge.border": "#2d5f47",
+  //   // Settings Editor - Forest Green
+  //   "settings.headerForeground": "#90ee90",
+  //   "settings.modifiedItemIndicator": "#228b22",
+  //   "settings.dropdownBackground": "#1a3d2e",
+  //   "settings.dropdownForeground": "#a8d8a8",
+  //   "settings.dropdownBorder": "#2d5f47",
+  //   "settings.checkboxBackground": "#1a3d2e",
+  //   "settings.checkboxForeground": "#a8d8a8",
+  //   "settings.checkboxBorder": "#2d5f47",
+  //   "settings.textInputBackground": "#1a3d2e",
+  //   "settings.textInputForeground": "#a8d8a8",
+  //   "settings.textInputBorder": "#2d5f47",
+  //   "settings.numberInputBackground": "#1a3d2e",
+  //   "settings.numberInputForeground": "#a8d8a8",
+  //   "settings.numberInputBorder": "#2d5f47"
+  // },
+  // // Token Color Customizations - Forest Green Syntax Highlighting
+  // "editor.tokenColorCustomizations": {
+  //   "textMateRules": [
+  //     {
+  //       "scope": [
+  //         "keyword",
+  //         "keyword.control"
+  //       ],
+  //       "settings": {
+  //         "foreground": "#32cd32",
+  //         "fontStyle": "bold"
+  //       }
+  //     },
+  //     {
+  //       "scope": [
+  //         "string",
+  //         "string.quoted"
+  //       ],
+  //       "settings": {
+  //         "foreground": "#90ee90"
+  //       }
+  //     },
+  //     {
+  //       "scope": [
+  //         "comment"
+  //       ],
+  //       "settings": {
+  //         "foreground": "#5a8a6b",
+  //         "fontStyle": "italic"
+  //       }
+  //     },
+  //     {
+  //       "scope": [
+  //         "entity.name.type",
+  //         "entity.name.class"
+  //       ],
+  //       "settings": {
+  //         "foreground": "#7cfc00"
+  //       }
+  //     },
+  //     {
+  //       "scope": [
+  //         "entity.name.function",
+  //         "entity.name.method"
+  //       ],
+  //       "settings": {
+  //         "foreground": "#98fb98"
+  //       }
+  //     },
+  //     {
+  //       "scope": [
+  //         "variable.parameter"
+  //       ],
+  //       "settings": {
+  //         "foreground": "#a8d8a8"
+  //       }
+  //     },
+  //     {
+  //       "scope": [
+  //         "constant.numeric"
+  //       ],
+  //       "settings": {
+  //         "foreground": "#32cd32"
+  //       }
+  //     },
+  //     {
+  //       "scope": [
+  //         "support.type",
+  //         "support.class"
+  //       ],
+  //       "settings": {
+  //         "foreground": "#7cfc00"
+  //       }
+  //     }
+  //   ]
+  // },
+  // // Semantic Token Color Customizations - C# Specific Forest Green
+  // "editor.semanticTokenColorCustomizations": {
+  //   "rules": {
+  //     "namespace": "#7cfc00",
+  //     "class": "#7cfc00",
+  //     "interface": "#98fb98",
+  //     "struct": "#7cfc00",
+  //     "enum": "#7cfc00",
+  //     "delegate": "#98fb98",
+  //     "method": "#98fb98",
+  //     "property": "#90ee90",
+  //     "field": "#a8d8a8",
+  //     "parameter": "#a8d8a8",
+  //     "variable": "#a8d8a8",
+  //     "keyword": "#32cd32"
+  //   }
+  // },
+  // Language-specific settings
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.rulers": [
+      80,
+      120
+    ],
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 120
+  },
+  "[razor]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "strings": true
+    }
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "strings": true
+    }
+  },
+  "[xml]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[yaml]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
+  },
+  "[dockerfile]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+  "[powershell]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+  "[sql]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+  "csharp.inlayHints.enableInlayHintsForTypes": true,
+  "csharp.inlayHints.enableInlayHintsForImplicitVariableTypes": true,
+  "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation": true,
+  "markdown.validate.enabled": true
+}

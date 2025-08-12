@@ -1,0 +1,122 @@
+{
+  // Core .NET Development Extensions
+  "recommendations": [
+    // Essential .NET Extensions
+    "ms-dotnettools.csdevkit",
+    "ms-dotnettools.csharp",
+    "ms-dotnettools.vscode-dotnet-runtime",
+    // GitHub Copilot & AI Assistance
+    "GitHub.copilot",
+    "GitHub.copilot-chat",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "VisualStudioExptTeam.intellicode-api-usage-examples",
+    // Testing & Code Quality
+    "ms-dotnettools.vstest-adapter",
+    "coverlet.vscode-coverlet",
+    "ryanluker.vscode-coverage-gutters",
+    "SonarSource.sonarlint-vscode",
+    "ms-vscode.test-adapter-converter",
+    // Code Formatting & Analysis
+    "editorconfig.editorconfig",
+    "ms-vscode.vscode-json",
+    "redhat.vscode-xml",
+    "redhat.vscode-yaml",
+    "DotJoshJohnson.xml",
+    // Git & Version Control
+    "eamodio.gitlens",
+    "GitHub.vscode-pull-request-github",
+    "ms-vscode.vscode-github-issue-notebooks",
+    "GitHub.remotehub",
+    "GitHub.vscode-github-actions",
+    // Database & Entity Framework
+    "ms-mssql.mssql",
+    "ms-mssql.data-workspace-vscode",
+    "humao.rest-client",
+    "ms-azuretools.vscode-cosmosdb",
+    "ms-vscode.vscode-sqlite-viewer",
+    // Docker & Containerization
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.remote-containers",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    // Azure & Cloud Development
+    "ms-vscode.azure-account",
+    "ms-azuretools.vscode-azureresourcegroups",
+    "ms-azuretools.vscode-azurefunctions",
+    "ms-azuretools.vscode-azureappservice",
+    "ms-azuretools.vscode-azurestorage",
+    "ms-dotnettools.vscode-dotnet-pack",
+    // Web Development (for ASP.NET Core)
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "formulahendry.auto-rename-tag",
+    "ms-vscode.vscode-css-peek",
+    "zignd.html-css-class-completion",
+    "pranaygp.vscode-css-peek",
+    // API Development & Testing
+    "42Crunch.vscode-openapi",
+    "Postman.postman-for-vscode",
+    "rangav.vscode-thunder-client",
+    "ms-vscode.vscode-httpyac",
+    // Documentation & Markdown
+    "yzhang.markdown-all-in-one",
+    "DavidAnson.vscode-markdownlint",
+    "bierner.markdown-mermaid",
+    "shd101wyy.markdown-preview-enhanced",
+    "MermaidChart.vscode-mermaid-chart",
+    "vstirbu.vscode-mermaid-preview",
+    // Package Management
+    "jmrog.vscode-nuget-package-manager",
+    "ms-dotnettools.vscode-dotnet-pack",
+    "fernandoescolar.vscode-solution-explorer",
+    // Code Snippets & Productivity
+    "ms-vscode.vscode-json",
+    "formulahendry.code-runner",
+    "alefragnani.Bookmarks",
+    "aaron-bond.better-comments",
+    "oderwat.indent-rainbow",
+    "PKief.material-icon-theme",
+    "ms-vscode.hexeditor",
+    // PowerShell & Scripting
+    "ms-vscode.PowerShell",
+    "ms-vscode.powershell-preview",
+    // Performance & Profiling
+    "ms-dotnettools.vscode-dotnet-pack",
+    "JetBrains.dotpeek",
+    // Security & Code Analysis
+    "ms-dotnettools.csdevkit",
+    "Snyk.snyk-vulnerability-scanner",
+    "ms-vscode.vscode-github-issue-notebooks",
+    // Remote Development
+    "ms-vscode-remote.remote-ssh",
+    "ms-vscode-remote.remote-ssh-edit",
+    "ms-vscode-remote.remote-wsl",
+    "ms-vscode-remote.vscode-remote-extensionpack",
+    // Theme & UI Enhancements
+    "PKief.material-icon-theme",
+    "vscode-icons-team.vscode-icons",
+    "GitHub.github-vscode-theme",
+    "zhuangtongfa.Material-theme",
+    // Utility Extensions
+    "ms-vscode.vscode-json",
+    "streetsidesoftware.code-spell-checker",
+    "ms-vscode.live-server",
+    "ritwickdey.LiveServer",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-complete-tag",
+    // Advanced .NET Features
+    "ms-dotnettools.blazorwasm-companion",
+    "ms-dotnettools.vscode-dotnet-pack",
+    "ionide.ionide-fsharp",
+    "ms-dotnettools.vscode-dotnet-runtime"
+  ],
+  // Extensions that should not be recommended (conflicting or redundant)
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-typescript",
+    "hookyqr.beautify",
+    "esbenp.prettier-vscode",
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "golang.go",
+    "rust-lang.rust-analyzer"
+  ]
+}

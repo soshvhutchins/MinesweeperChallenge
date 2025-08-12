@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Minesweeper - Enterprise Game</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/forest-theme.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="forest-background">
+        <div class="app-container">
+            <!-- Header -->
+            <header class="game-header">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-leaf maple-leaf"></i>
+                        <h1>Forest Minesweeper</h1>
+                        <i class="fas fa-seedling acorn"></i>
+                    </div>
+                    <div class="auth-section" id="authSection">
+                        <div class="auth-buttons" id="authButtons">
+                            <button class="btn btn-secondary" id="loginBtn">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </button>
+                            <button class="btn btn-primary" id="registerBtn">
+                                <i class="fas fa-user-plus"></i> Register
+                            </button>
+                        </div>
+                        <div class="user-info hidden" id="userInfo">
+                            <span class="welcome-text">Welcome, <span id="username"></span>!</span>
+                            <button class="btn btn-secondary" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Game Area -->
+            <main class="game-main">
+                <!-- Authentication Forms -->
+                <div class="auth-overlay hidden" id="authOverlay">
+                    <div class="auth-modal">
+                        <div class="modal-header">
+                            <h2 id="authTitle">Login to Forest Minesweeper</h2>
+                            <button class="close-btn" id="closeAuthModal">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <form id="authForm">
+                            <div class="input-group">
+                                <label for="authUsername">Username</label>
+                                <input type="text" id="authUsername" name="username" required>
+                                <i class="fas fa-user input-icon"></i>
+                            </div>
+                            <div class="input-group" id="emailGroup">
+                                <label for="authEmail">Email</label>
+                                <input type="email" id="authEmail" name="email">
+                                <i class="fas fa-envelope input-icon"></i>
+                            </div>
+                            <div class="input-group">
+                                <label for="authPassword">Password</label>
+                                <input type="password" id="authPassword" name="password" required>
+                                <i class="fas fa-lock input-icon"></i>
+                                <div class="password-requirements hidden" id="passwordRequirements">
+                                    <small>Password must contain:</small>
+                                    <ul>
+                                        <li>At least 8 characters</li>
+                                        <li>One uppercase letter (A-Z)</li>
+                                        <li>One lowercase letter (a-z)</li>
+                                        <li>One number (0-9)</li>
+                                        <li>One special character (@$!%*?&)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full" id="authSubmitBtn">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </button>
+                        </form>
+                        <div class="auth-switch">
+                            <span id="authSwitchText">Don't have an account?</span>
+                            <button class="link-btn" id="authSwitchBtn">Register here</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Dashboard -->
+                <div class="game-dashboard" id="gameDashboard">
+                    <div class="dashboard-sidebar">
+                        <div class="game-controls">
+                            <h3><i class="fas fa-gamepad"></i> Game Controls</h3>
+                            <div class="difficulty-selector">
+                                <label for="difficultySelect">Difficulty Level</label>
+                                <select id="difficultySelect" class="forest-select">
+                                    <option value="beginner">🌱 Beginner (9x9, 10 mines)</option>
+                                    <option value="intermediate">🌿 Intermediate (16x16, 40 mines)</option>
+                                    <option value="expert">🌳 Expert (30x16, 99 mines)</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary btn-full" id="newGameBtn">
+                                <i class="fas fa-plus"></i> New Game
+                            </button>
+                        </div>
+
+                        <div class="game-stats">
+                            <h3><i class="fas fa-chart-line"></i> Statistics</h3>
+                            <div class="stat-item">
+                                <span class="stat-label">Games Played</span>
+                                <span class="stat-value" id="gamesPlayed">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Games Won</span>
+                                <span class="stat-value" id="gamesWon">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Win Rate</span>
+                                <span class="stat-value" id="winRate">0%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Best Time</span>
+                                <span class="stat-value" id="bestTime">--:--</span>
+                            </div>
+                        </div>
+
+                        <div class="active-games">
+                            <h3><i class="fas fa-list"></i> Active Games</h3>
+                            <div class="games-list" id="activeGamesList">
+                                <div class="no-games">
+                                    <i class="fas fa-leaf"></i>
+                                    <p>No active games</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-area">
+                        <div class="game-info">
+                            <div class="game-status">
+                                <div class="status-item">
+                                    <i class="fas fa-bomb"></i>
+                                    <span id="minesLeft">--</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span id="gameTimer">00:00</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="fas fa-mouse"></i>
+                                    <span id="moveCount">0</span>
+                                </div>
+                            </div>
+                            <div class="game-controls hidden" id="gameControls">
+                                <button class="btn btn-secondary btn-sm" id="pauseGameBtn">
+                                    <i class="fas fa-pause"></i> Pause
+                                </button>
+                                <button class="btn btn-danger btn-sm" id="stopGameBtn">
+                                    <i class="fas fa-stop"></i> Stop Game
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="game-board-container">
+                            <div class="game-status-overlay hidden" id="gameStatusOverlay">
+                                <div class="status-message">
+                                    <div class="status-icon" id="statusIcon"></div>
+                                    <h2 id="statusTitle">Game Over</h2>
+                                    <p id="statusMessage">Better luck next time!</p>
+                                    <button class="btn btn-primary" id="playAgainBtn">
+                                        <i class="fas fa-redo"></i> Play Again
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="game-board" id="gameBoard">
+                                <div class="welcome-message">
+                                    <div class="welcome-content">
+                                        <i class="fas fa-leaf welcome-icon"></i>
+                                        <h2>Welcome to Forest Minesweeper!</h2>
+                                        <p>Experience the enchanted forest adventure with modern minesweeper gameplay.
+                                        </p>
+
+                                        <!-- Call-to-Action Buttons -->
+                                        <div class="welcome-actions" id="welcomeActions">
+                                            <div class="action-buttons guest-actions" id="guestActions">
+                                                <button class="btn btn-primary btn-large" id="quickLoginBtn">
+                                                    <i class="fas fa-sign-in-alt"></i> Log In to Play
+                                                </button>
+                                                <button class="btn btn-secondary btn-large" id="quickRegisterBtn">
+                                                    <i class="fas fa-user-plus"></i> Register & Start
+                                                </button>
+                                            </div>
+                                            <div class="action-buttons authenticated-actions hidden"
+                                                id="authenticatedActions">
+                                                <button class="btn btn-primary btn-large" id="quickPlayBtn">
+                                                    <i class="fas fa-play"></i> Start Playing Now!
+                                                </button>
+                                                <p class="play-description">Choose your difficulty and begin your forest
+                                                    adventure</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="forest-elements">
+                                            <i class="fas fa-leaf maple-leaf-anim"></i>
+                                            <i class="fas fa-seedling acorn-anim"></i>
+                                            <i class="fas fa-tree"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="game-footer">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <i class="fas fa-code"></i>
+                        <span>Built with Clean Architecture & .NET 9</span>
+                    </div>
+                    <div class="footer-section">
+                        <i class="fas fa-leaf"></i>
+                        <span>Forest Theme by Enterprise Minesweeper</span>
+                    </div>
+                    <div class="footer-section">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>JWT Authentication Enabled</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Floating Forest Elements -->
+        <div class="floating-elements">
+            <div class="floating-leaf" style="animation-delay: 0s;"><i class="fas fa-leaf"></i></div>
+            <div class="floating-leaf" style="animation-delay: 2s;"><i class="fas fa-leaf"></i></div>
+            <div class="floating-leaf" style="animation-delay: 4s;"><i class="fas fa-leaf"></i></div>
+            <div class="floating-acorn" style="animation-delay: 1s;"><i class="fas fa-seedling"></i></div>
+            <div class="floating-acorn" style="animation-delay: 3s;"><i class="fas fa-seedling"></i></div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-overlay hidden" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-leaf">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <script src="js/forest-minesweeper.js"></script>
+</body>
+
+</html>

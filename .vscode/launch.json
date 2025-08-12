@@ -1,0 +1,89 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch .NET Core",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/Minesweeper.WebApi/bin/Debug/net9.0/Minesweeper.WebApi.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/Minesweeper.WebApi",
+      "console": "internalConsole",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      }
+    },
+    {
+      "name": "Launch .NET Core (Web)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/Minesweeper.WebApi/bin/Debug/net9.0/Minesweeper.WebApi.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/Minesweeper.WebApi",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      "name": "Launch .NET Core (Console)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/Minesweeper.WebApi/bin/Debug/net9.0/Minesweeper.WebApi.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/Minesweeper.WebApi",
+      "console": "integratedTerminal",
+      "stopAtEntry": false,
+      "justMyCode": false
+    },
+    {
+      "name": "Attach to .NET Core",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+    },
+    {
+      "name": "Launch Tests",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-tests",
+      "program": "dotnet",
+      "args": [
+        "test",
+        "--logger",
+        "console;verbosity=detailed"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
+      "name": "Docker .NET Launch",
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "docker-run: debug"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch Web + API",
+      "configurations": [
+        "Launch .NET Core (Web)"
+      ],
+      "stopAll": true
+    }
+  ]
+}
