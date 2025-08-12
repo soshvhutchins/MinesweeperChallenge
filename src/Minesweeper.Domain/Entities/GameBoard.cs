@@ -14,7 +14,13 @@ public class GameBoard
     public GameDifficulty Difficulty { get; private set; }
     public bool IsInitialized { get; private set; }
 
-    private GameBoard() { } // For EF Core
+    private GameBoard()
+    {
+        // For EF Core only; fields will be set by reflection
+        _cells = null!;
+        _random = null!;
+        Difficulty = null!;
+    }
 
     public GameBoard(GameDifficulty difficulty, Random? random = null)
     {
@@ -51,26 +57,62 @@ public class GameBoard
         if (!IsValidPosition(firstClickPosition))
             return Result.Failure("First click position is invalid");
 
-        var availablePositions = GetAvailablePositions(firstClickPosition).ToList();
+        // For Beginner, use a fixed, stationary mine layout (classic Windows Minesweeper style)
+        if (Difficulty.Name == "Beginner" && Difficulty.Rows == 9 && Difficulty.Columns == 9 && Difficulty.MineCount == 10)
+        {
+            // Classic Windows Beginner layout (fixed, but not visible to user)
+            // Example: Place bombs at these 10 positions (row, col):
+            var fixedMinePositions = new List<CellPosition>
+            {
+                CellPosition.Of(0, 0),
+                CellPosition.Of(0, 3),
+                CellPosition.Of(1, 6),
+                CellPosition.Of(2, 2),
+                CellPosition.Of(3, 5),
+                CellPosition.Of(4, 8),
+                CellPosition.Of(5, 1),
+                CellPosition.Of(6, 4),
+                CellPosition.Of(7, 7),
+                CellPosition.Of(8, 5)
+            };
 
+            // Never place a mine on the first click or its neighbors
+            var excluded = new HashSet<CellPosition> { firstClickPosition };
+            foreach (var adj in firstClickPosition.GetAdjacentPositions().Where(IsValidPosition))
+                excluded.Add(adj);
+
+            // If any fixed mine is excluded, shift all mines down by 1 row (wrap around)
+            // This ensures first click is always safe, but mines are stationary for a given board
+            var adjustedMinePositions = fixedMinePositions.Select(pos =>
+                excluded.Contains(pos)
+                    ? CellPosition.Of((pos.Row + 1) % 9, pos.Column)
+                    : pos
+            ).ToList();
+
+            // Place mines
+            foreach (var position in adjustedMinePositions)
+            {
+                GetCell(position).PlaceMine();
+            }
+
+            CalculateAdjacentMineCounts();
+            IsInitialized = true;
+            return Result.Success();
+        }
+
+        // Default: random placement for other difficulties
+        var availablePositions = GetAvailablePositions(firstClickPosition).ToList();
         if (availablePositions.Count < Difficulty.MineCount)
             return Result.Failure("Not enough positions available for mine placement");
-
-        // Randomly select positions for mines
         var minePositions = availablePositions
             .OrderBy(_ => _random.Next())
             .Take(Difficulty.MineCount)
             .ToList();
-
-        // Place mines
         foreach (var position in minePositions)
         {
             GetCell(position).PlaceMine();
         }
-
-        // Calculate adjacent mine counts for all cells
         CalculateAdjacentMineCounts();
-
         IsInitialized = true;
         return Result.Success();
     }
@@ -83,12 +125,9 @@ public class GameBoard
         var excludedPositions = new HashSet<CellPosition> { excludePosition };
 
         // Also exclude adjacent positions to ensure first click is always safe
-        foreach (var adjacent in excludePosition.GetAdjacentPositions())
+        foreach (var adjacent in excludePosition.GetAdjacentPositions().Where(IsValidPosition))
         {
-            if (IsValidPosition(adjacent))
-            {
-                excludedPositions.Add(adjacent);
-            }
+            excludedPositions.Add(adjacent);
         }
 
         for (int row = 0; row < Difficulty.Rows; row++)
@@ -183,7 +222,7 @@ public class GameBoard
         while (toProcess.Count > 0)
         {
             var currentPosition = toProcess.Dequeue();
-            var currentCell = GetCell(currentPosition);
+            // var currentCell = GetCell(currentPosition); // Unused variable removed
 
             foreach (var adjacentPosition in currentPosition.GetAdjacentPositions())
             {
