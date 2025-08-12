@@ -1,5 +1,7 @@
 // Forest Minesweeper - JavaScript Game Logic
 class ForestMinesweeper {
+    // Track the last exploded cell (row, col) for orange highlight
+    explodedCell = null;
     constructor() {
         this.apiBase = '/api';
         this.token = localStorage.getItem('minesweeper_token');
@@ -339,7 +341,7 @@ class ForestMinesweeper {
             const cellData = board.cells[row][col];
 
             cell.className = 'mine-cell';
-            cell.textContent = '';
+            // Do not clear textContent here; preserve revealed numbers
 
             if (cellData.isFlagged) {
                 cell.classList.add('flagged');
@@ -347,18 +349,40 @@ class ForestMinesweeper {
             } else if (cellData.isRevealed) {
                 cell.classList.add('revealed');
                 if (cellData.hasMine) {
-                    cell.classList.add('mine');
-                    cell.innerHTML = '<i class="fas fa-bomb"></i>';
+                    // If this is the exploded cell, do NOT add .mine (no red background)
+                    if (this.explodedCell && this.explodedCell.row === row && this.explodedCell.col === col) {
+                        cell.classList.add('mine-exploded');
+                        cell.innerHTML = `
+                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;">
+                                <circle cx="14" cy="16" r="9" fill="#ff8900" stroke="#222" stroke-width="2.5"/>
+                                <rect x="13" y="3" width="2" height="7" rx="1" fill="#222"/>
+                                <rect x="20.5" y="8.5" width="2" height="7" rx="1" transform="rotate(45 20.5 8.5)" fill="#222"/>
+                                <rect x="5.5" y="8.5" width="2" height="7" rx="1" transform="rotate(-45 5.5 8.5)" fill="#222"/>
+                                <line x1="14" y1="2" x2="14" y2="7" stroke="#000" stroke-width="1.5"/>
+                                <polygon points="14,0 15,2 13,2" fill="#fff200"/>
+                            </svg>
+                        `;
+                    } else {
+                        cell.classList.add('mine');
+                        cell.innerHTML = '<i class="fas fa-bomb"></i>';
+                    }
                 } else if (cellData.adjacentMineCount > 0) {
-                    cell.textContent = cellData.adjacentMineCount;
+                    cell.innerHTML = cellData.adjacentMineCount;
                     cell.dataset.count = cellData.adjacentMineCount;
+                } else {
+                    cell.innerHTML = '';
                 }
+            } else {
+                // If not revealed and not flagged, clear content
+                cell.innerHTML = '';
             }
         });
     }
 
     // Handle cell click (reveal)
     async handleCellClick(e, row, col) {
+        // Reset explodedCell before click
+        this.explodedCell = null;
         e.preventDefault();
         const status = this.getGameStatus(this.currentGame?.status);
         if (!this.currentGame || (status !== 'InProgress' && status !== 'NotStarted')) return;
@@ -381,6 +405,10 @@ class ForestMinesweeper {
             });
 
             if (response.isSuccess) {
+                // If the game is now lost, and the revealed cell is a mine, mark it as exploded
+                if (response.data.status === 3 && response.data.board.cells[row][col].hasMine && response.data.board.cells[row][col].isRevealed) {
+                    this.explodedCell = { row, col };
+                }
                 this.currentGame = response.data;
                 this.updateCellStates();
                 this.updateGameInfo();
@@ -580,6 +608,10 @@ class ForestMinesweeper {
 
         try {
             const response = await this.apiCall('/games/active', 'GET');
+            // Highlight the exploded mine in orange
+            if (this.explodedCell && this.explodedCell.row === row && this.explodedCell.col === col) {
+                cell.classList.add('mine-exploded');
+            }
 
             if (response.isSuccess) {
                 this.renderActiveGames(response.data);

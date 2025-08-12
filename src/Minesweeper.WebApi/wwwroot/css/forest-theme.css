@@ -1,3 +1,14 @@
+/* Exploded bomb icon is orange (rgb=255,137,0) */
+/* Exploded bomb icon is orange (rgb=255,137,0) - force on FontAwesome pseudo-element */
+.mine-cell.mine-exploded .fa-bomb,
+.mine-cell.mine-exploded .fa-bomb::before {
+    color: #ff8900 !important;
+    -webkit-text-fill-color: #ff8900 !important;
+    text-shadow: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
 /* Forest Minesweeper - Modern Forest Theme */
 
 /* CSS Custom Properties (Variables) */
@@ -13,7 +24,7 @@
     --acorn-brown: #a0522d;
     --autumn-gold: #daa520;
     --maple-red: #cd853f;
-    --cream: #f5f5dc;
+    --cream: #d1d19e;
     --mist: #f0f8f0;
 
     /* Game State Colors */
@@ -682,8 +693,18 @@ body {
 }
 
 .mine-cell.mine {
+
     background: linear-gradient(135deg, var(--mine-red), #b8341a);
     color: white;
+}
+
+/* Exploded mine (clicked bomb) is orange */
+/* Exploded mine cell: remove background so only orange SVG bomb is visible */
+.mine-cell.mine-exploded {
+    background: linear-gradient(135deg, var(--revealed-beige), #f0f0f0) !important;
+    color: inherit !important;
+    animation: explosion 0.5s ease-out;
+    z-index: 2;
 }
 
 .mine-cell.exploded {
